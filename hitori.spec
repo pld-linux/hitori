@@ -1,24 +1,31 @@
 Summary:	Hitori puzzle game for GNOME
 Summary(pl.UTF-8):	Hitori - układanka logiczna dla GNOME
 Name:		hitori
-Version:	0.4.5
+Version:	3.14.2.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Games
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/hitori/0.4/%{name}-%{version}.tar.xz
-# Source0-md5:	9a5c0536d76235dd62b194396aa0cccf
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/hitori/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	1afa234b2cd013bf89a5ff301ff0229f
 URL:		https://wiki.gnome.org/Apps/Hitori
+BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	cairo-devel >= 1.4
-BuildRequires:	glib2-devel >= 2.0
+BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
-BuildRequires:	gtk+3-devel >= 3.0
+BuildRequires:	gtk+3-devel >= 3.14.0
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.592
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	yelp-tools
+Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
+Requires:	glib2 >= 1:2.32.0
+Requires:	gtk+3 >= 3.14.0
 Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -29,8 +36,8 @@ puzzles such as Sudoku.
 
 %description -l pl.UTF-8
 Hitori to mała aplikacja pozwalająca na grę w tytułową układankę
-logiczną - bardzo podobną tematycznie do bardziej popularnych,
-takich jak Sudoku.
+logiczną - bardzo podobną tematycznie do bardziej popularnych, takich
+jak Sudoku.
 
 %prep
 %setup -q
@@ -58,9 +65,11 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%glib_compile_schemas
 %update_icon_cache hicolor
 
 %postun
+%glib_compile_schemas
 %update_icon_cache hicolor
 
 %files -f %{name}.lang
@@ -69,5 +78,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/hitori
 %{_datadir}/hitori
 %{_datadir}/appdata/hitori.appdata.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.hitori.gschema.xml
 %{_desktopdir}/hitori.desktop
 %{_iconsdir}/hicolor/*/apps/hitori.png
