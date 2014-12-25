@@ -15,14 +15,14 @@ BuildRequires:	cairo-devel >= 1.4
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
 BuildRequires:	gtk+3-devel >= 3.14.0
-BuildRequires:	intltool >= 0.35.0
+BuildRequires:	intltool >= 0.50.2
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires(post,postun):	glib2 >= 1:2.26.0
+Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.32.0
 Requires:	gtk+3 >= 3.14.0
