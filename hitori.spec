@@ -1,12 +1,12 @@
 Summary:	Hitori puzzle game for GNOME
 Summary(pl.UTF-8):	Hitori - układanka logiczna dla GNOME
 Name:		hitori
-Version:	3.16.1
+Version:	3.16.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Games
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/hitori/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	259a894f8b8a428054a9c06ee57a6ba6
+# Source0-md5:	16b1e75d3f44723d4996eb726fb95f75
 URL:		https://wiki.gnome.org/Apps/Hitori
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
