@@ -1,19 +1,18 @@
 Summary:	Hitori puzzle game for GNOME
 Summary(pl.UTF-8):	Hitori - układanka logiczna dla GNOME
 Name:		hitori
-Version:	3.16.2
+Version:	3.22.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Games
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/hitori/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	16b1e75d3f44723d4996eb726fb95f75
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/hitori/3.22/%{name}-%{version}.tar.xz
+# Source0-md5:	8cc85e5394c69937469abd1d0a9ac299
 URL:		https://wiki.gnome.org/Apps/Hitori
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	cairo-devel >= 1.4
 BuildRequires:	glib2-devel >= 1:2.32.0
-BuildRequires:	gnome-common
 BuildRequires:	gtk+3-devel >= 3.15.0
 BuildRequires:	intltool >= 0.50.2
 BuildRequires:	libtool >= 2:2
@@ -76,8 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/hitori
-%{_datadir}/appdata/hitori.appdata.xml
+%{_datadir}/appdata/org.gnome.Hitori.appdata.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.hitori.gschema.xml
-%{_desktopdir}/hitori.desktop
-%{_iconsdir}/hicolor/*/apps/hitori.png
-%{_iconsdir}/hicolor/symbolic/apps/hitori-symbolic.svg
+%{_desktopdir}/org.gnome.Hitori.desktop
+%{_iconsdir}/hicolor/*/apps/org.gnome.Hitori.png
+%{_iconsdir}/hicolor/symbolic/apps/org.gnome.Hitori-symbolic.svg
