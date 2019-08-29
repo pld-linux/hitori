@@ -1,24 +1,25 @@
 Summary:	Hitori puzzle game for GNOME
 Summary(pl.UTF-8):	Hitori - układanka logiczna dla GNOME
 Name:		hitori
-Version:	3.22.4
+Version:	3.32.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Games
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/hitori/3.22/%{name}-%{version}.tar.xz
-# Source0-md5:	97c1570b6acc961cf767e5883417ea36
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/hitori/3.32/%{name}-%{version}.tar.xz
+# Source0-md5:	72406fd1fca2b36b52b130fe0d57c15b
 URL:		https://wiki.gnome.org/Apps/Hitori
-BuildRequires:	appstream-glib-devel
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+BuildRequires:	appstream-glib
 BuildRequires:	cairo-devel >= 1.4
 BuildRequires:	desktop-file-utils
 BuildRequires:	gettext-tools >= 0.19.8
+# -std=gnu11
+BuildRequires:	gcc >= 6:4.7
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gtk+3-devel >= 3.15.0
-BuildRequires:	libtool >= 2:2
+BuildRequires:	meson >= 0.48.0
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.592
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
@@ -43,21 +44,14 @@ jak Sudoku.
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--disable-silent-rules
+%meson build
 
-%{__make}
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang %{name} --with-gnome
 
@@ -74,10 +68,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS MAINTAINERS NEWS README
+%doc AUTHORS MAINTAINERS NEWS README.md
 %attr(755,root,root) %{_bindir}/hitori
-%{_datadir}/appdata/org.gnome.Hitori.appdata.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.hitori.gschema.xml
+%{_datadir}/metainfo/org.gnome.Hitori.appdata.xml
 %{_desktopdir}/org.gnome.Hitori.desktop
-%{_iconsdir}/hicolor/*/apps/org.gnome.Hitori.png
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Hitori.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Hitori-symbolic.svg
